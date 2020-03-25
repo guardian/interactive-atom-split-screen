@@ -44,11 +44,12 @@ header.content__head--interactive,
     body.ios &,
     body.android & {
       background-color: transparent;
-      .article-kicker__section {
-        display: none;
-      }
     }
-    .label__link-wrapper,
+    .article-kicker__section,
+    .content__section-label {
+      display: none;
+    }
+  .label__link-wrapper,
     .ios & a,
     .android & a {
       background-color: #f6f6f6;
