@@ -1,5 +1,6 @@
 $mobile-header-height: 160;
 $mobileLandscape-header-height: 600px;
+@import 'header__bg-image';
 
 header.content__head--interactive,
 .article__header {
@@ -8,36 +9,6 @@ header.content__head--interactive,
   background-size: ($mobile-header-height * 1.4%) auto;
   background-position: 64.5% 100%;
   position: relative;
-
-
-  background-image: url(https://uploads.guim.co.uk/2020/03/25/585b64c4cc8b5c2200cc535e9d60cb8eac256f7a.800.jpg);
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    background-image: url(https://uploads.guim.co.uk/2020/03/25/585b64c4cc8b5c2200cc535e9d60cb8eac256f7a.1600.jpg);
-  }
-  @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
-    background-image: url(https://uploads.guim.co.uk/2020/03/25/585b64c4cc8b5c2200cc535e9d60cb8eac256f7a.2400.jpg);
-  }
-
-  @include mq(tablet) {
-    background-image: url(https://uploads.guim.co.uk/2020/03/25/585b64c4cc8b5c2200cc535e9d60cb8eac256f7a.980.jpg);
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-      background-image: url(https://uploads.guim.co.uk/2020/03/25/585b64c4cc8b5c2200cc535e9d60cb8eac256f7a.1960.jpg);
-    }
-    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
-      background-image: url(https://uploads.guim.co.uk/2020/03/25/585b64c4cc8b5c2200cc535e9d60cb8eac256f7a.2600.jpg);
-    }
-  }
-
-  @include mq(leftCol) {
-    background-image: url(https://uploads.guim.co.uk/2020/03/25/585b64c4cc8b5c2200cc535e9d60cb8eac256f7a.1300.jpg);
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-      background-image: url(https://uploads.guim.co.uk/2020/03/25/585b64c4cc8b5c2200cc535e9d60cb8eac256f7a.2600.jpg);
-    }
-    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
-      background-image: url(https://uploads.guim.co.uk/2020/03/25/585b64c4cc8b5c2200cc535e9d60cb8eac256f7a.3900.jpg);
-    }
-  }
-
 
   @include mq(mobileLandscape) {
     padding-bottom: 0;
@@ -52,19 +23,16 @@ header.content__head--interactive,
   }
   @include mq(desktop) {
     width: 980px;
-    // height: 735px;
     height: 680px;
     background-size: auto 735px;
   }
   @include mq(leftCol) {
     width: 1140px;
     height: 855px;
-    // height: 800px;
     background-size: auto 855px;
   }
   @include mq(wide) {
     width: 1300px;
-    // height: 900px;
     height: 975px;
     background-size: auto 975px;
   }

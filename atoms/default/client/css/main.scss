@@ -3,16 +3,18 @@
 @import "palette";
 // @import "enhancer";
 @import "header";
+@import "meta";
 
 .interactive-atom {
     margin: 0;
     padding: 0;
 }
 
+body {
+    background-color: #f6f6f6;
+}
+
 img {
     height: auto;
 }
 
-
-// f31a59743347c56abea2721a88c9bb381fc62b59
-// 585b64c4cc8b5c2200cc535e9d60cb8eac256f7a
