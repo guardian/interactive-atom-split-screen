@@ -1,0 +1,130 @@
+$mobile-header-height: 160;
+$mobileLandscape-header-height: 600px;
+
+header.content__head--interactive,
+.article__header {
+  height: 0;
+  padding-bottom: $mobile-header-height * 1vw;
+  background-image: url(https://media.guim.co.uk/585b64c4cc8b5c2200cc535e9d60cb8eac256f7a/0_0_8256_6192/2000.jpg);
+  background-size: ($mobile-header-height * 1.4%) auto;
+  background-position: 64.5% 100%;
+  position: relative;
+  @include mq(mobileLandscape) {
+    padding-bottom: 0;
+    background-size: auto 600px;
+    height: $mobileLandscape-header-height;
+  }
+  @include mq(tablet) {
+    width: 740px;
+    background-size: auto 640px;
+    height: 555px;
+    margin: 0 auto;
+  }
+  @include mq(desktop) {
+    width: 980px;
+    // height: 735px;
+    height: 680px;
+    background-size: auto 735px;
+  }
+  @include mq(leftCol) {
+    width: 1140px;
+    height: 855px;
+    // height: 800px;
+    background-size: auto 855px;
+  }
+  @include mq(wide) {
+    width: 1300px;
+    // height: 900px;
+    height: 975px;
+    background-size: auto 975px;
+  }
+
+
+  .content__labels,
+  .article-kicker {
+    padding-top: 10px;
+    .label__link-wrapper,
+    .ios & a,
+    .android & a {
+      background-color: #f6f6f6;
+      display: inline-block;
+      line-height: 30px;
+      padding: 0 10px 0;
+    }
+    @include mq(leftCol) {
+      position: static;
+      margin-left: auto;
+      width: auto;
+    }
+  }
+  .content__headline,
+  .headline {
+    padding-top: 0;
+    font-size: 64px;
+    line-height: 62px;
+    color: #f6f6f6;
+    font-family: "Guardian Titlepiece","Guardian Headline Full","Guardian Headline","Guardian Egyptian Web",Georgia,serif;
+    @include mq(leftCol) {
+      font-size: 112px;
+      line-height: 100px;
+    }
+  }
+
+  .content__main-column,
+  & > .gs-container {
+    height: $mobile-header-height * 1vw;
+    @include mq(mobileLandscape) {
+      height: 100%;
+    }
+  }
+
+  @include mq(leftCol) {
+    .content__main-column {
+      margin-left: calc(50% + 20px);
+      width: 50%;
+      padding-left: 0;
+      position: relative;
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -20px;
+        bottom: 0;
+        width: 1px;
+        background-color: #f6f6f6;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .content__standfirst,
+  .standfirst {
+    position: absolute;
+    bottom: 0;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 800;
+    color: #f6f6f6;
+    @include mq(leftCol) {
+      font-size: 36px;
+      line-height: 40px;
+      max-width: 540px;
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .ios &,
+  .android & {
+    margin-bottom: 100px;
+    .meta {
+      position: absolute;
+      bottom: 0;
+      transform: translateY(100%);
+      z-index: 100;
+    }
+  }
+
+}
