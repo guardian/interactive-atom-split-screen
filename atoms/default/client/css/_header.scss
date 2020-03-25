@@ -41,6 +41,13 @@ header.content__head--interactive,
   .content__labels,
   .article-kicker {
     padding-top: 10px;
+    body.ios &,
+    body.android & {
+      background-color: transparent;
+      .article-kicker__section {
+        display: none;
+      }
+    }
     .label__link-wrapper,
     .ios & a,
     .android & a {
@@ -48,6 +55,7 @@ header.content__head--interactive,
       display: inline-block;
       line-height: 30px;
       padding: 0 10px 0;
+      font-weight: 700;
     }
     @include mq(leftCol) {
       position: static;
@@ -55,6 +63,7 @@ header.content__head--interactive,
       width: auto;
     }
   }
+
   .content__headline,
   .headline {
     padding-top: 0;
@@ -65,6 +74,10 @@ header.content__head--interactive,
     @include mq(leftCol) {
       font-size: 112px;
       line-height: 100px;
+      body.ios &,
+      body.android & {
+        background-color: transparent;
+      }
     }
   }
 
@@ -104,6 +117,13 @@ header.content__head--interactive,
     line-height: 28px;
     font-weight: 800;
     color: #f6f6f6;
+    .ios &,
+    .android & {
+      padding-right: 0;
+      .standfirst__inner {
+        background-color: transparent;
+      }
+    }
     @include mq(leftCol) {
       font-size: 36px;
       line-height: 40px;
