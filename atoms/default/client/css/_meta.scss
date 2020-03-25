@@ -1,4 +1,5 @@
-.content__meta-container {
+.content__meta-container,
+.meta {
   .meta__extras,
   .inline-icon {
     border-color: #999;
@@ -16,9 +17,13 @@
       right: 0;
       height: 0;
       bottom: 0;
+      top: auto;
       height: 3px;
       border-top: 1px solid #999;
       border-bottom: 1px solid #999;
+      background-image: none;
+      margin: 0;
+      width: auto;
     }
     &:after {
       bottom: 8px;
@@ -41,4 +46,10 @@
     padding-bottom: 24px;
   }
 
+}
+
+// App
+.ios .article__header .meta,
+.android .meta {
+  padding-top: 3px !important;
 }
