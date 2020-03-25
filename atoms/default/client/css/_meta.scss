@@ -2,7 +2,7 @@
 .meta {
   .meta__extras,
   .inline-icon {
-    border-color: #999;
+    border-color: #888; // looks like 999
   }
 
   @include mq(mobileMedium) {
