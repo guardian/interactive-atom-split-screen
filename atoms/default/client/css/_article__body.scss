@@ -51,8 +51,11 @@
       background-color: currentColor;
     }
   }
-  h2:nth-child(2):before {
-    display: none;
+  h2:nth-child(2) {
+    margin-top: 12px;
+    &:before {
+      display: none;
+    }
   }
 
   h2 + h2 {
@@ -79,6 +82,12 @@
 
   [data-atom-id='interactives/2020/03/jw-antarctic/default'] {
     display: none;
+  }
+
+  @include mq(leftCol) {
+    .content__main-column .element-image {
+      display: none;
+    }
   }
 }
 

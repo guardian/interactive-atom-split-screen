@@ -3,12 +3,6 @@ el.src = '<%= atomPath %>/app.js';
 document.body.appendChild(el);
 
 
-createImagePanel();
-function createImagePanel() {
-  let imageElAll = document.querySelectorAll('.element-image');
-  console.log('main', imageElAll);
-}
-
 setTimeout(() => {
   if (window.resize) {
     const html = document.querySelector('html')

@@ -9,6 +9,7 @@ header.content__head--interactive,
   background-size: ($mobile-header-height * 1.4%) auto;
   background-position: 64.5% 100%;
   position: relative;
+  z-index: 10;
 
   @include mq(mobileLandscape) {
     padding-bottom: 0;
