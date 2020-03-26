@@ -1,0 +1,15 @@
+@include mq(leftCol) {
+  .content__main .gs-container {
+    .content__main-column {
+      margin-left: 50%;
+      margin-right: 0;
+      padding-left: 20px;
+    }
+    &:not(.u-cf) .content__main-column {
+      padding-right: 20px;
+      @include mq(wide) {
+        padding-right: 70px;
+      }
+    }
+  }
+}
