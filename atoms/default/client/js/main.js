@@ -3,8 +3,10 @@ el.src = '<%= atomPath %>/app.js';
 document.body.appendChild(el);
 
 
-function tweakHeaderDom() {
-  let headerEl = document.querySelector('header.content__head--interactive');
+createImagePanel();
+function createImagePanel() {
+  let imageElAll = document.querySelectorAll('.element-image');
+  console.log('main', imageElAll);
 }
 
 setTimeout(() => {
