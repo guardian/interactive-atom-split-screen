@@ -12,28 +12,43 @@
       }
     }
   }
-  body .visual-panel {
-    display: block;
+
+  .visual-panel {
     width: 50%;
     position: fixed;
     top: 0;
     right: calc(50% - 1px);
-    width: 650px;
+    width: 570px;
     z-index: 1;
     height: 100vh;
-    overflow: scroll;
     border-right: 1px solid #999;
+    overflow: hidden;
+    @include mq(wide) {
+      width: 650px;
+    }
     &__inner {
-      margin-top: 100vh;
+      margin: 100vh 0;
     }
     img {
       height: auto;
     }
-    .element {
-      margin: 0 0 48px;
-      figcaption {
-        display: none;
+    .element-interactive.interactive {
+      background-color: inherit;
+      iframe {
+        height: 320px;
+        @include mq(wide) {
+          height: 365px;
+        }
       }
     }
+  }
+
+  .content-footer,
+  .l-footer {
+    position: relative;
+    z-index: 10;
+  }
+  .content-footer {
+    background-color: #f6f6f6;
   }
 }

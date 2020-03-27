@@ -46,13 +46,16 @@
       position: absolute;
       top: -4px;
       left: -20px;
-      right: -90px;
+      right: -40px;
       height: 1px;
       background-color: currentColor;
+      @include mq(wide) {
+        right: -90px;
+      }
     }
   }
   h2:nth-child(2) {
-    margin-top: 12px;
+    margin-top: 9px;
     &:before {
       display: none;
     }
@@ -85,8 +88,11 @@
   }
 
   @include mq(leftCol) {
-    .content__main-column .element-image {
-      display: none;
+    .content__main-column {
+      .element-interactive,
+      .element-image {
+        display: none;
+      }
     }
   }
 }
