@@ -83,6 +83,35 @@
     }
   }
 
+  .element[data-atom-type="audio"] {
+    .atom--audio {
+      padding: 4px 0 0;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: #999;
+      @include mq(tablet) {
+        left: -20px;
+      }
+    }
+    .atom--audio__label {
+      color: #c70000;
+    }
+    .atom--audio {
+      background-color: inherit;
+      border-top: 0;
+    }
+    .atom--audio__headline {
+      display: none;
+    }
+
+  }
+
   [data-atom-id='interactives/2020/03/jw-antarctic/default'] {
     display: none;
   }
@@ -90,6 +119,7 @@
   @include mq(leftCol) {
     .content__main-column {
       .element-interactive,
+      // .element[data-atom-type="audio"],
       .element-image {
         display: none;
       }

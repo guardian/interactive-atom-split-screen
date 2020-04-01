@@ -13,7 +13,8 @@ setTimeout(function () {
 // into a a new element, .visual-panel
 // and injects it next to the main text element
 function createVisualPanel() {
-  let articleVisualElAll = document.querySelectorAll('.element-image, .element-interactive');
+  let articleVisualElAll = document.querySelectorAll('.element-image, .element-interactive, .element[data-atom-type="audio"]');
+
   let visualPanelEl = document.createElement('div');
   let visualPanelInnerEl = document.createElement('div');
 
