@@ -18,13 +18,13 @@
     position: fixed;
     top: 0;
     right: calc(50% - 1px);
-    width: 570px;
+    width: 569px;
     z-index: 1;
     height: 100vh;
     border-right: 1px solid #999;
     overflow: hidden;
     @include mq(wide) {
-      width: 650px;
+      width: 649px;
     }
     &__inner {
       margin: 100vh 0;
@@ -32,13 +32,10 @@
     img {
       height: auto;
     }
-    .element-interactive.interactive {
-      background-color: inherit;
-      iframe {
-        height: 320px;
-        @include mq(wide) {
-          height: 365px;
-        }
+    .element-interactive.interactive iframe {
+      height: 320px;
+      @include mq(wide) {
+        height: 365px;
       }
     }
   }

@@ -14,12 +14,17 @@
   .gs-container.u-cf .content__main-column {
     max-width: none;
   }
+  .element-interactive.interactive {
+    background-color: inherit;
+  }
 
-  figcaption {
+  figure.element-image figcaption {
     font-size: 14px;
     line-height: 18px;
     color: #767676;
     font-family: "Guardian Text Sans Web", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    padding-top: 5px;
+    margin-bottom: 18px;
     strong {
       font-weight: inherit;
       color: #121212;

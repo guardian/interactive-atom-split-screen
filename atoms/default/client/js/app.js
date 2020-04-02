@@ -3,17 +3,31 @@
 
 // to-do instead of set timeout
 // implement checkExists-type thing
-setTimeout(function () {
-  createVisualPanel();
-  syncVisualPanelScroll();
+// setTimeout(function () {
+// }, 1000);
 
-}, 1000);
+checkReady();
+const checkReadyInterval = setInterval(function () {
+  if (checkReady()) {
+    clearInterval(checkReadyInterval);
+    createVisualPanel();
+    syncVisualPanelScroll();
+  }
+}, 10);
+
+
+function checkReady() {
+  let intElAll = document.querySelectorAll('.element-interactive[data-canonical-url*="looping-video"]');
+  const intElLast = intElAll[intElAll.length - 1]
+  return !(intElLast.querySelectorAll('a').length > 0);
+}
+
 
 // Clones all .element-image
 // into a a new element, .visual-panel
 // and injects it next to the main text element
 function createVisualPanel() {
-  let articleVisualElAll = document.querySelectorAll('.element-image, .element-interactive, .element[data-atom-type="audio"]');
+  let articleVisualElAll = document.querySelectorAll('.element-image, .element-interactive');
 
   let visualPanelEl = document.createElement('div');
   let visualPanelInnerEl = document.createElement('div');
@@ -45,11 +59,12 @@ function syncVisualPanelScroll() {
   });
 }
 
-function calcTargetY(el) {
-  const visualPanelEl = document.querySelector('.visual-panel');
+function calcTargetY() {
+  const visualPanelEl = document.querySelector('.visual-panel__inner');
+  const copyEl = document.querySelector('.content__main .gs-container:not(.u-cf)');
   const contentHeight = ({
-    visual: (document.querySelector('.visual-panel__inner').offsetHeight + window.innerHeight / 2),
-    copy: (document.querySelector('.content__main .gs-container:not(.u-cf)').offsetHeight)
+    visual: (visualPanelEl.offsetHeight + window.innerHeight / 2),
+    copy: (copyEl.offsetHeight)
   });
   const r = (contentHeight.visual / contentHeight.copy);
   const targetY = ((window.scrollY - (window.innerHeight / 4)) * r);
@@ -57,15 +72,3 @@ function calcTargetY(el) {
 
 }
 
-// Once we scroll past the header
-// enable free scrolling in the visual panel
-function unlockVisualPanel() {
-  const visualPanelEl = document.querySelector('.visual-panel');
-  console.log(visualPanelEl);
-  window.addEventListener('scroll', function (e) {
-    if (window.scrollY >= window.innerHeight) {
-      console.log('scrolled past 00vh');
-    }
-
-  })
-}

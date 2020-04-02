@@ -3,10 +3,21 @@
   @include mq(leftCol) {
     display: block;
   }
-  .element {
+  .element,
+  .element.element--showcase {
     margin: 0 0 48px;
     figcaption {
-      display: none;
+      padding: 5px 20px 0;
+      @include mq(wide) {
+        padding-right: 80px;
+      }
+      .element-image__caption,
+      .element-image__credit {
+        display: block;
+      }
+      .element-image__credit {
+        color: #999;
+      }
     }
   }
 
