@@ -3,7 +3,7 @@ $mobileLandscape-header-height: 600px;
 @import 'header__bg-image';
 
 header.content__head--interactive,
-.article__header {
+.article .article__header {
   height: 0;
   padding-bottom: $mobile-header-height * 1vw;
   background-size: ($mobile-header-height * 1.4%) auto;
@@ -36,6 +36,10 @@ header.content__head--interactive,
     width: 1300px;
     height: 975px;
     background-size: auto 975px;
+    .android &,
+    .ios & {
+      width: 1200px;
+    }
   }
 
 
@@ -58,6 +62,7 @@ header.content__head--interactive,
       line-height: 30px;
       padding: 0 10px 0;
       font-weight: 700;
+      font-size: 17px;
     }
     @include mq(leftCol) {
       position: static;

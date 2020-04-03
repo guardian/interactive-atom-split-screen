@@ -3,6 +3,24 @@
   .ios &,
   .android & {
     background-color: #f6f6f6;
+    max-width: 764px;
+    margin: 0 auto;
+    @include mq(900px) {
+      padding-left: 12px;
+      padding-right: 120px;
+    }
+    @include mq(980px) {
+      max-width: 980px;
+      padding-right: 340px;
+    }
+    @include mq(1140px) {
+      max-width: 1140px;
+      padding-right: 500px;
+    }
+    @include mq(1120px) {
+      max-width: 690px;
+      padding-right: 70px;
+    }
   }
   .content__main-column {
     max-width: 620px;
@@ -18,16 +36,27 @@
     background-color: inherit;
   }
 
-  figure.element-image figcaption {
-    font-size: 14px;
-    line-height: 18px;
-    color: #767676;
-    font-family: "Guardian Text Sans Web", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    padding-top: 5px;
-    margin-bottom: 18px;
-    strong {
-      font-weight: inherit;
-      color: #121212;
+  p {
+    margin-bottom: 8px;
+  }
+
+  figure.element-image {
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    figcaption {
+      font-size: 14px;
+      line-height: 18px;
+      color: #767676;
+      font-family: "Guardian Text Sans Web", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      padding-top: 5px;
+      margin-bottom: 18px;
+      strong {
+        font-weight: inherit;
+        color: #121212;
+      }
     }
   }
 
@@ -50,10 +79,19 @@
       content: '';
       position: absolute;
       top: -4px;
-      left: -20px;
-      right: -40px;
+      left: -10px;
+      right: -10px;
       height: 1px;
       background-color: currentColor;
+      .ios &,
+      .android & {
+        left: -12px;
+        right: -12px;
+      }
+      @include mq(tablet) {
+        left: -20px;
+        right: -40px;
+      }
       @include mq(wide) {
         right: -90px;
       }
@@ -68,11 +106,13 @@
 
   h2 + h2 {
     font-family: "Guardian Titlepiece","Guardian Headline Full","Guardian Headline","Guardian Egyptian Web",Georgia,serif;
-    padding: 3px;
+    padding: 3px 0;
     font-size: 32px;
     line-height: 36px;
     margin: -22px 0 18px -2px;
-
+    @include mq(tablet) {
+      padding: 3px;
+    }
     @include mq(leftCol) {
       font-size: 48px;
       line-height: 52px;
@@ -89,6 +129,7 @@
   }
 
   .element[data-atom-type="audio"] {
+    position: relative;
     .atom--audio {
       padding: 4px 0 0;
     }
