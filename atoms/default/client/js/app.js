@@ -1,36 +1,34 @@
 // if you want to import a module from shared/js then you can
 // just do e.g. import Scatter from "shared/js/scatter.js"
 
-// to-do instead of set timeout
-// implement checkExists-type thing
-// setTimeout(function () {
-// }, 1000);
 
 checkReady();
 const checkReadyInterval = setInterval(function () {
   if (checkReady()) {
     clearInterval(checkReadyInterval);
     createVisualPanel();
-    syncVisualPanelScroll();
+    syncVisualPanelScroll()
   }
 }, 10);
 
-
+// --- 1 --- Initialise at the right time
 function checkReady() {
-  let intElAll = document.querySelectorAll('.element-interactive[data-canonical-url*="looping-video"]');
+  const intElAll = document.querySelectorAll('.element-interactive[data-canonical-url*="looping-video"]');
   const intElLast = intElAll[intElAll.length - 1]
   return !(intElLast.querySelectorAll('a').length > 0);
 }
 
 
+// --- 2 --- Build the visual panel
+
 // Clones all .element-image
 // into a a new element, .visual-panel
 // and injects it next to the main text element
 function createVisualPanel() {
-  let articleVisualElAll = document.querySelectorAll('.element-image, .element-interactive');
+  const articleVisualElAll = document.querySelectorAll('.element-image, .element-interactive');
 
-  let visualPanelEl = document.createElement('div');
-  let visualPanelInnerEl = document.createElement('div');
+  const visualPanelEl = document.createElement('div');
+  const visualPanelInnerEl = document.createElement('div');
 
   visualPanelEl.classList.add('visual-panel');
   visualPanelInnerEl.classList.add('visual-panel__inner');
@@ -47,28 +45,75 @@ function createVisualPanel() {
 }
 
 
-// keep .visual-panel scroll
-// in sync with window's
+// --- 3 --- Sync the visual panel scroll
 function syncVisualPanelScroll() {
   const visualPanelEl = document.querySelector('.visual-panel');
   window.addEventListener('scroll', function () {
-    const visualPanelTargetY = calcTargetY('visual');
+    const t = calcScrollPosition();
     visualPanelEl.scrollTo({
-      top: visualPanelTargetY
+      top: t
     })
-  });
+
+  })
 }
 
-function calcTargetY() {
+// Helper functions for scroll sync
+function calcScrollPosition() {
+  const positionBracket = calcPositionBracket();
+  const scrollY = window.scrollY;
+  const r = ((scrollY - positionBracket.copy.prev) / (positionBracket.copy.next - positionBracket.copy.prev));
+
+  const visualsScrollTarget = Math.round(positionBracket.visual.prev + ((positionBracket.visual.next - positionBracket.visual.prev) * r));
+
+  // console.log('win', positionBracket.copy.prev, window.scrollY, positionBracket.copy.next);
+  // console.log('vis', positionBracket.visual.prev, visualsScrollTarget, positionBracket.visual.next);
+
+  return visualsScrollTarget;
+}
+
+function calcPositionBracket() {
+  const elPositions = getElPositionArrays();
+  const scrollY = window.scrollY;
+  let i;
+  for (i = 0; elPositions.copy.length > i; i++) {
+    if (elPositions.copy[i] >= scrollY) {
+      break;
+    }
+  }
+
+  const positionBracket = ({
+    copy: ({
+      prev: (i > 0 ? elPositions.copy[i - 1] : 0),
+      next: elPositions.copy[i]
+    }),
+    visual: ({
+      prev: (i > 0 ? elPositions.visual[i - 1] : 0),
+      next: elPositions.visual[i]
+    }),
+  });
+
+  return positionBracket;
+}
+
+function getElPositionArrays() {
   const visualPanelEl = document.querySelector('.visual-panel__inner');
-  const copyEl = document.querySelector('.content__main .gs-container:not(.u-cf)');
-  const contentHeight = ({
-    visual: (visualPanelEl.offsetHeight + window.innerHeight / 2),
-    copy: (copyEl.offsetHeight)
+  const copyEl = document.querySelector('.content__main .gs-container:not(.u-cf) .content__main-column');
+
+  const winScrollY = window.scrollY;
+  // const visualPanelScrollY = visualPanelEl.scrollTop;
+
+  const offsetsCopy = [...copyEl.querySelectorAll('.element-image, .element-interactive')].map(function (visEl) {
+    return Math.round(visEl.getBoundingClientRect().top + winScrollY);
   });
-  const r = (contentHeight.visual / contentHeight.copy);
-  const targetY = ((window.scrollY - (window.innerHeight / 4)) * r);
-  return targetY;
+  offsetsCopy.unshift(-1);
 
+  const offsetsVisual = [...visualPanelEl.querySelectorAll('.element-image, .element-interactive')].map(function (visEl) {
+    // return Math.round(visEl.getBoundingClientRect().top + winScrollY);
+    return visEl.offsetTop;
+  });
+  offsetsVisual.unshift(-1);
+
+  console.log(offsetsVisual);
+
+  return ({ visual: offsetsVisual, copy: offsetsCopy });
 }
-
