@@ -48,13 +48,16 @@ function createVisualPanel() {
 // --- 3 --- Sync the visual panel scroll
 function syncVisualPanelScroll() {
   const visualPanelEl = document.querySelector('.visual-panel');
-  window.addEventListener('scroll', function () {
-    const t = calcScrollPosition();
-    visualPanelEl.scrollTo({
-      top: t
-    })
+  const currentScroll = visualPanelEl.scrollTop;
+  const targetScroll = calcScrollPosition();
+  const difference = targetScroll - visualPanelEl.scrollTop;
+  const step = difference * 0.33;
 
-  })
+  const t = currentScroll + step;
+  visualPanelEl.scrollTo({
+    top: t
+  });
+  window.requestAnimationFrame(syncVisualPanelScroll);
 }
 
 // Helper functions for scroll sync
@@ -64,9 +67,6 @@ function calcScrollPosition() {
   const r = ((scrollY - positionBracket.copy.prev) / (positionBracket.copy.next - positionBracket.copy.prev));
 
   const visualsScrollTarget = Math.round(positionBracket.visual.prev + ((positionBracket.visual.next - positionBracket.visual.prev) * r));
-
-  // console.log('win', positionBracket.copy.prev, window.scrollY, positionBracket.copy.next);
-  // console.log('vis', positionBracket.visual.prev, visualsScrollTarget, positionBracket.visual.next);
 
   return visualsScrollTarget;
 }
@@ -100,20 +100,18 @@ function getElPositionArrays() {
   const copyEl = document.querySelector('.content__main .gs-container:not(.u-cf) .content__main-column');
 
   const winScrollY = window.scrollY;
-  // const visualPanelScrollY = visualPanelEl.scrollTop;
+  const halfWindowHeight = window.innerHeight / 2;
 
   const offsetsCopy = [...copyEl.querySelectorAll('.element-image, .element-interactive')].map(function (visEl) {
-    return Math.round(visEl.getBoundingClientRect().top + winScrollY);
+    return Math.round(visEl.getBoundingClientRect().top + winScrollY - halfWindowHeight);
   });
   offsetsCopy.unshift(-1);
 
   const offsetsVisual = [...visualPanelEl.querySelectorAll('.element-image, .element-interactive')].map(function (visEl) {
-    // return Math.round(visEl.getBoundingClientRect().top + winScrollY);
-    return visEl.offsetTop;
+    return visEl.offsetTop - halfWindowHeight;
   });
   offsetsVisual.unshift(-1);
 
-  console.log(offsetsVisual);
 
   return ({ visual: offsetsVisual, copy: offsetsCopy });
 }
