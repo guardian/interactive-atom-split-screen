@@ -47,6 +47,23 @@
     padding-bottom: 24px;
   }
 
+  // Closing meta area
+  .gs-container.u-cf:last-child & {
+    padding: 24px 0 0;
+    margin-top: 9px;
+    svg path {
+      fill: #c70000;
+    }
+    &:before {
+      top: 0;
+      bottom: auto;
+    }
+    &:after {
+      top: 8px;
+      bottom: auto;
+    }
+  }
+
 }
 
 // App
