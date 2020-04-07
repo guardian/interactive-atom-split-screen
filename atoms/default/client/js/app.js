@@ -53,7 +53,7 @@ function syncVisualPanelScroll() {
   const currentScroll = visualPanelEl.scrollTop;
   const targetScroll = calcScrollPosition();
   const difference = targetScroll - visualPanelEl.scrollTop;
-  const step = difference * 0.33;
+  const step = difference * 0.67;
 
   const t = currentScroll + step;
   visualPanelEl.scrollTo({
