@@ -40,11 +40,15 @@
     margin-bottom: 8px;
   }
 
-  figure.element-image {
+  figure.element-image,
+  .element-atom--media {
     img {
       width: 100%;
       height: auto;
       display: block;
+    }
+    .inline-triangle {
+      display: none;
     }
     figcaption {
       font-size: 14px;
@@ -174,7 +178,8 @@
     .content__main-column {
       .element-interactive,
       // .element[data-atom-type="audio"],
-      .element-image {
+      .element-image,
+      .element-atom--media {
         // display: none;
         &.current {
           border-left: 20px solid tomato;

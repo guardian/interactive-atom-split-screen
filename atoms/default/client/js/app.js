@@ -27,7 +27,7 @@ function checkReady() {
 // into a a new element, .visual-panel
 // and injects it next to the main text element
 function createVisualPanel() {
-  const articleVisualElAll = document.querySelectorAll('.element-image, .element-interactive');
+  const articleVisualElAll = document.querySelectorAll('.element-image, .element-interactive, .element-atom--media');
 
   const visualPanelEl = document.createElement('div');
   const visualPanelInnerEl = document.createElement('div');
@@ -105,12 +105,12 @@ function getElPositionArrays() {
   const winScrollY = window.scrollY;
   const halfWindowHeight = window.innerHeight / 2;
 
-  let offsetsCopy = [...copyEl.querySelectorAll('.element-image, .element-interactive')].map(function (visEl) {
+  let offsetsCopy = [...copyEl.querySelectorAll('.element-image, .element-interactive, .element-atom--media')].map(function (visEl) {
     return Math.round(visEl.getBoundingClientRect().top + winScrollY - halfWindowHeight);
   });
   offsetsCopy = addStartAndEndMarkers(offsetsCopy);
 
-  let offsetsVisual = [...visualPanelEl.querySelectorAll('.element-image, .element-interactive')].map(function (visEl) {
+  let offsetsVisual = [...visualPanelEl.querySelectorAll('.element-image, .element-interactive, .element-atom--media')].map(function (visEl) {
     return visEl.offsetTop - halfWindowHeight;
   });
   offsetsVisual = addStartAndEndMarkers(offsetsVisual, true);
