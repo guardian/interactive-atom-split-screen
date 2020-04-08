@@ -8,7 +8,8 @@ const checkReadyInterval = setInterval(function () {
     console.log('SPLIT VIEW ATOM STARTS');
     clearInterval(checkReadyInterval);
     createVisualPanel();
-    syncVisualPanelScroll()
+    syncVisualPanelScroll();
+    customTypography();
   }
 }, 10);
 
@@ -127,4 +128,14 @@ function addStartAndEndMarkers(markers, bump) {
     markers[markers.length - 2] = (markers[markers.length - 2] + (window.innerHeight / 5));
   }
   return markers;
+}
+
+// --- 4 --- Article-specific tweaks
+function customTypography() {
+  document.querySelectorAll('h2 + h2').forEach(function (el) {
+    const firstChar = el.innerText.charAt(0);
+    if (firstChar == '‘') {
+      el.classList.add('hanging-quote');
+    }
+  })
 }

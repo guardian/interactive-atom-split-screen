@@ -126,6 +126,14 @@
     &:before {
       display: none;
     }
+    &.hanging-quote {
+      @include mq(tablet) {
+        text-indent: -0.6rem;
+      }
+      @include mq(leftCol) {
+        text-indent: -0.7rem;
+      }
+    }
   }
 
   .element[data-atom-type="audio"] {
