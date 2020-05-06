@@ -16,8 +16,12 @@ const checkReadyInterval = setInterval(function () {
 // --- 1 --- Initialise at the right time
 function checkReady() {
   const intElAll = document.querySelectorAll('.element-interactive[data-canonical-url*="looping-video"]');
-  const intElLast = intElAll[intElAll.length - 1]
-  return !(intElLast.querySelectorAll('a').length > 0);
+  if (intElAll.length > 0) {
+    const intElLast = intElAll[intElAll.length - 1]
+    return !(intElLast.querySelectorAll('a').length > 0);
+  } else {
+    return true;
+  }
 }
 
 
