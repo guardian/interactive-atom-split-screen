@@ -1,9 +1,9 @@
 $mobile-header-height: 160;
 $mobileLandscape-header-height: 600px;
-@import 'header__bg-image';
 
 header.content__head--interactive,
 .article .article__header {
+  background-color: #dcdcdc;
   height: 0;
   padding-bottom: $mobile-header-height * 1vw;
   background-size: ($mobile-header-height * 1.4%) auto;
