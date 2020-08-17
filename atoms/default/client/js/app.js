@@ -5,7 +5,6 @@
 checkReady();
 const checkReadyInterval = setInterval(function () {
   if (checkReady()) {
-    console.log('SPLIT VIEW ATOM STARTS');
     clearInterval(checkReadyInterval);
     createVisualPanel();
     syncVisualPanelScroll();
@@ -47,8 +46,6 @@ function createVisualPanel() {
 
   const mainColEl = document.querySelector('.content__main .gs-container:not(.u-cf');
   mainColEl.insertBefore(visualPanelEl, mainColEl.firstChild);
-
-  console.log('visual panel ready', visualPanelEl);
 }
 
 
