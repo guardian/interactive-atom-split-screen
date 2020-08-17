@@ -79,6 +79,7 @@ header.content__head--interactive,
     font-size: 42px;
     line-height: 1;
     color: #f6f6f6;
+    mix-blend-mode: screen;
     font-family: "Guardian Titlepiece","Guardian Headline Full","Guardian Headline","Guardian Egyptian Web",Georgia,serif;
     @include mq(tablet) {
       line-height: 0.95;
@@ -136,6 +137,7 @@ header.content__head--interactive,
     line-height: 28px;
     font-weight: 800;
     color: #f6f6f6;
+    mix-blend-mode: screen;
     .ios &,
     .android & {
       padding-right: 0;

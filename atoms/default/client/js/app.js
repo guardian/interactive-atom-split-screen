@@ -6,6 +6,7 @@ checkReady();
 const checkReadyInterval = setInterval(function () {
   if (checkReady()) {
     clearInterval(checkReadyInterval);
+    addHeaderImage();
     createVisualPanel();
     syncVisualPanelScroll();
     customTypography();
@@ -30,7 +31,7 @@ function checkReady() {
 // into a a new element, .visual-panel
 // and injects it next to the main text element
 function createVisualPanel() {
-  const articleVisualElAll = document.querySelectorAll('.element-image, .element-interactive, .element-atom--media');
+  const articleVisualElAll = document.querySelectorAll('.element-image:not(.header-image), .element-interactive, .element-atom--media');
 
   const visualPanelEl = document.createElement('div');
   const visualPanelInnerEl = document.createElement('div');
@@ -139,4 +140,25 @@ function customTypography() {
       el.classList.add('hanging-quote');
     }
   })
+}
+
+
+// --- 5 ---- First showcase is header image
+function addHeaderImage() {
+  const headerEl = document.querySelector('header.content__head--interactive, .article .article__header');
+  const headerFigureEl = document.querySelector('.element-image.element--immersive');
+  const headerFigureSrc = headerFigureEl.querySelector('img').getAttribute('src');
+  const srcHigh = higherResImg(headerFigureSrc);
+  headerEl.style.backgroundImage = `url(${srcHigh})`;
+
+  headerFigureEl.parentNode.removeChild(headerFigureEl);
+
+}
+
+function higherResImg(srcLow) {
+  let srcArray = srcLow.split('/')
+  srcArray.pop();
+  srcArray.push('2000.jpg');
+  let srcHigh = srcArray.join('/')
+  return srcHigh;
 }
