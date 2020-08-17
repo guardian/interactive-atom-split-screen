@@ -147,11 +147,17 @@ function customTypography() {
 function addHeaderImage() {
   const headerEl = document.querySelector('header.content__head--interactive, .article .article__header');
   const headerFigureEl = document.querySelector('.element-image.element--immersive');
-  const headerFigureSrc = headerFigureEl.querySelector('img').getAttribute('src');
-  const srcHigh = higherResImg(headerFigureSrc);
-  headerEl.style.backgroundImage = `url(${srcHigh})`;
-
-  headerFigureEl.parentNode.removeChild(headerFigureEl);
+  if (headerFigureEl) {
+    const headerFigureSrc = headerFigureEl.querySelector('img').getAttribute('src');
+    const srcHigh = higherResImg(headerFigureSrc);
+    headerEl.style.backgroundImage = `url(${srcHigh})`;
+    headerFigureEl.parentNode.removeChild(headerFigureEl);
+  } else {
+    let standfirst = document.querySelector('.content__standfirst p');
+    if (standfirst) {
+      standfirst.innerText = 'Pssst, add an immersive image at the top of the article, so it can be used as a header photo!'
+    }
+  }
 
 }
 
