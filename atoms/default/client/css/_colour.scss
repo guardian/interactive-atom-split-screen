@@ -1,21 +1,53 @@
-.article .article__body,
-.content__main {
-  .prose figure.figure-wide + h2,
-  h2 {
-    color: #C70000;
-  }
-  .element[data-atom-type="audio"] {
-    .atom--audio__label {
-      color: #c70000;
+@mixin use-colour($c) {
+  .article .article__body,
+  .content__main {
+    .prose figure.figure-wide + h2,
+    h2 {
+      color: $c;
+    }
+    .element[data-atom-type="audio"] {
+      .atom--audio__label {
+        color: $c;
+      }
     }
   }
+
+  .content__meta-container,
+  .meta {
+    .gs-container.u-cf:last-child & {
+      svg path {
+        fill: $c;
+      }
+    }
+  }
+
 }
 
-.content__meta-container,
-.meta {
-  .gs-container.u-cf:last-child & {
-    svg path {
-      fill: #c70000;
-    }
-  }
+// Default fallback
+@include use-colour(#121212);
+
+.garnett--pillar-news,
+.content--pillar-news {
+  @include use-colour(#c70000);
 }
+
+.garnett--pillar-opinion,
+.content--pillar-opinion {
+  @include use-colour(#e05e00);
+}
+
+.garnett--pillar-sport,
+.content--pillar-sport {
+  @include use-colour(#0084c6);
+}
+
+.garnett--pillar-culture,
+.content--pillar-culture {
+  @include use-colour(#a1845c);
+}
+
+.garnett--pillar-lifestyle,
+.content--pillar-lifestyle {
+  @include use-colour(#bb3b80);
+}
+
