@@ -1,0 +1,21 @@
+.article .article__body,
+.content__main {
+  .prose figure.figure-wide + h2,
+  h2 {
+    color: #C70000;
+  }
+  .element[data-atom-type="audio"] {
+    .atom--audio__label {
+      color: #c70000;
+    }
+  }
+}
+
+.content__meta-container,
+.meta {
+  .gs-container.u-cf:last-child & {
+    svg path {
+      fill: #c70000;
+    }
+  }
+}
