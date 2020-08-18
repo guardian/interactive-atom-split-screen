@@ -174,36 +174,12 @@
   @include mq(leftCol) {
     .content__main-column {
       .element-interactive,
-      // .element[data-atom-type="audio"],
       .element-image,
       .element-atom--media {
-        // display: none;
-        &.current {
-          position: relative;
-          left: -20px;
-        }
         height: 0;
         overflow: hidden;
         margin: 0;
 
-        // // markers from here
-        // figcaption:before {
-        //   content: '•';
-        //   display: inline;
-        //   font-size: 44px;
-        //   color: tomato;
-        //   vertical-align: middle;
-        //   position: relative;
-        //   bottom: 3px;
-        // }
-
-        // height: 26px;
-        // margin-left: 0;
-        // img {
-        //   display: none;
-        // }
-        // overflow: hidden;
-        // // … to here
       }
     }
   }
