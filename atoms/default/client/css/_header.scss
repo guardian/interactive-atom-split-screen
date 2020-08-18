@@ -109,6 +109,9 @@ header.content__head--interactive,
       color: #121212;
       mix-blend-mode: hard-light;
     }
+    .content__main-column:before {
+      background-color: #121212;
+    }
   }
 
   .content__main-column,

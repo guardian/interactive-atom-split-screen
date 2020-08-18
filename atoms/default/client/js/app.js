@@ -152,7 +152,7 @@ function addHeaderImage() {
     const srcHigh = higherResImg(headerFigureSrc);
     headerEl.style.backgroundImage = `url(${srcHigh})`;
     headerFigureEl.parentNode.removeChild(headerFigureEl);
-    if (headerFigureEl.classList.contains('element--showcase')) {
+    if (headerFigureEl.classList.contains('element--immersive')) {
       headerEl.classList.add('showcase-alt')
     }
   } else {
