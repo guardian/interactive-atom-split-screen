@@ -99,6 +99,16 @@ header.content__head--interactive,
       font-size: 64px;
       padding-right: 40px;
     }
+
+  }
+
+  &.showcase-alt {
+    .content__headline,
+    .content__standfirst,
+    .standfirst {
+      color: #121212;
+      mix-blend-mode: hard-light;
+    }
   }
 
   .content__main-column,
