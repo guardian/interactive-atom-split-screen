@@ -6,36 +6,33 @@ header.content__head--interactive,
   background-color: #dcdcdc;
   height: 0;
   padding-bottom: $mobile-header-height * 1vw;
-  background-size: ($mobile-header-height * 1.4%) auto;
-  background-position: 64.5% 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   position: relative;
   z-index: 10;
 
   @include mq(mobileLandscape) {
     padding-bottom: 0;
-    background-size: auto 600px;
     height: $mobileLandscape-header-height;
   }
   @include mq(tablet) {
     width: 740px;
-    background-size: auto 640px;
     height: 555px;
     margin: 0 auto;
   }
   @include mq(desktop) {
     width: 980px;
     height: 680px;
-    background-size: auto 735px;
   }
   @include mq(leftCol) {
     width: 1140px;
     height: 855px;
-    background-size: auto 855px;
   }
   @include mq(wide) {
     width: 1300px;
     height: 975px;
-    background-size: auto 975px;
     .android &,
     .ios & {
       width: 1200px;
